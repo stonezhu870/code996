@@ -1,6 +1,6 @@
 {
   "name": "code996",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "code996 是一个分析工具，它可以统计 Git 项目的 commit 时间分布，进而推导出这个项目的编码工作强度。",
   "scripts": {
     "dev": "vite --port 3800",

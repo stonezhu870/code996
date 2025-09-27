@@ -16,5 +16,5 @@ import LanguageSwitcher from './public/components/LanguageSwitcher.vue'
 </script>
 
 <style lang="scss">
-@import '@/public/styles/index.scss';
+@use '@/public/styles/index.scss';
 </style>

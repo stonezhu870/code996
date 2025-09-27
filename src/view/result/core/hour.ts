@@ -1,4 +1,5 @@
 import { TimeCount } from '../../../typings'
+import { i18n } from '../../../i18n'
 
 export function getHourResult(hourData: TimeCount[]) {
   const { openingTime, closingTime } = getWorkTimeRange(hourData)
@@ -68,8 +69,8 @@ function getWorkingTime(hourData: TimeCount[] = [], openingTime: TimeCount) {
   const top9ElseTimeCount = top9ElseTime.reduce((total, item) => total + item.count, 0)
 
   const workHourPl = [
-    { time: '工作', count: workingTimeCount, timeCount: top9Time.length },
-    { time: '加班', count: workingElseTimeCount, timeCount: top9ElseTime.length },
+    { time: i18n.global.t('result.chartLabels.work'), count: workingTimeCount, timeCount: top9Time.length },
+    { time: i18n.global.t('result.chartLabels.overtime'), count: workingElseTimeCount, timeCount: top9ElseTime.length },
   ]
 
   return { workHourPl, workingTimeCount, workingElseTimeCount, top9TimeCount, top9ElseTimeCount }

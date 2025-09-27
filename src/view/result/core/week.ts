@@ -1,5 +1,6 @@
 import { getTotalCount, getRadio } from './utils'
 import { TimeCount } from '../../../typings'
+import { i18n } from '../../../i18n'
 
 export function getWeekResult(weekData: TimeCount[]) {
   const workDayData = weekData.slice(0, 5)
@@ -21,8 +22,8 @@ export function getWeekResult(weekData: TimeCount[]) {
   }
 
   const workWeekPl = [
-    { time: '工作日', count: commitCount.workday },
-    { time: '周末', count: commitCount.saturday + commitCount.sunday },
+    { time: i18n.global.t('result.timeLabels.workday'), count: commitCount.workday },
+    { time: i18n.global.t('result.timeLabels.weekend'), count: commitCount.saturday + commitCount.sunday },
   ]
 
   const workDayType = getWorkDayType(commitRatio)

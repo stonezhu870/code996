@@ -4,6 +4,7 @@ import { getWeekResult } from './week'
 import { parseResult, parseWeekData } from './url-helper'
 import { getRandomText } from './utils'
 import { TimeCount, WorkTimeData, Result996 } from '../../../typings'
+import { i18n } from '../../../i18n'
 
 /**
  * 获取路由元信息
@@ -49,7 +50,11 @@ export function getResult() {
     // 工作类型模板，格式为：上班时间 + 下班时间 + 工作天数
     workingType: `${_openingTime || '?'}${_closingTime || '?'}${workDayTypeValue || '?'}`,
     // 工作类型的可读描述
-    workingTypeStr: `早 ${_openingTime || '?'} 晚 ${_closingTime || '?'} 一周 ${workDayTypeValue || '?'} 天`,
+    workingTypeStr: i18n.global.t('result.workingTypeTemplate', {
+      start: _openingTime || '?',
+      end: _closingTime || '?',
+      days: workDayTypeValue || '?',
+    }),
     openingTime,
     closingTime,
     workDayTypeValue,
@@ -124,16 +129,19 @@ export function get996Index({ workHourPl, workWeekPl, hourData }: WorkTimeData):
   // 根据996指数生成有趣的描述文字
   let index996Str = ''
 
+  const currentLocale = i18n.global.locale.value
+  const messages = i18n.global.messages.value[currentLocale] as any
+
   if (index996 <= 10) {
-    index996Str = getRandomText(['令人羡慕的工作', '恭喜，你们没有福报', '你就是搬砖界的欧皇吧'])
+    index996Str = getRandomText(messages.result.index996Descriptions.excellent)
   } else if (index996 > 10 && index996 <= 50) {
-    index996Str = getRandomText(['你还有剩余价值'])
+    index996Str = getRandomText(messages.result.index996Descriptions.good)
   } else if (index996 > 50 && index996 <= 90) {
-    index996Str = getRandomText(['加油，老板的法拉利靠你了'])
+    index996Str = getRandomText(messages.result.index996Descriptions.medium)
   } else if (index996 > 90 && index996 <= 110) {
-    index996Str = getRandomText(['你的福报已经修满了'])
+    index996Str = getRandomText(messages.result.index996Descriptions.bad)
   } else if (index996 > 110) {
-    index996Str = getRandomText(['你们想必就是卷王中的卷王吧'])
+    index996Str = getRandomText(messages.result.index996Descriptions.terrible)
   }
 
   return { index996, index996Str, overTimeRadio, isStandard }

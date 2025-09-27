@@ -3,7 +3,7 @@
     <table class="container table">
       <thead>
         <tr>
-          <th class="l">时间类型</th>
+          <th class="l">{{ t('result.table.timeType') }}</th>
           <th v-for="item in tableData" :class="getActive(item.index996)">{{ item.type }}</th>
         </tr>
       </thead>
@@ -14,12 +14,14 @@
         </tr>
       </tbody>
     </table>
-    <p class="tips">* 高亮列为该项目的估算指标</p>
+    <p class="tips">{{ t('result.table.highlightTip') }}</p>
   </div>
 </template>
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { getTableCore } from '../core/table'
 
+const { t } = useI18n()
 const { tableConfig, tableData, index996, isStandard } = getTableCore()
 
 const getActive = (index: number) => {

@@ -1,5 +1,6 @@
 import { useRouter } from 'vue-router'
 import { TimeCount } from '../../../typings'
+import { i18n } from '../../../i18n'
 
 /**
  * 解析url参数为标准数据格式
@@ -56,13 +57,13 @@ export function parseWeekData(list: TimeCount[]): TimeCount[] {
   }
 
   const templateList = [
-    { name: '周一', key: '1' },
-    { name: '周二', key: '2' },
-    { name: '周三', key: '3' },
-    { name: '周四', key: '4' },
-    { name: '周五', key: '5' },
-    { name: '周六', key: '6' },
-    { name: '周日', key: '7' },
+    { name: i18n.global.t('result.weekdays.monday'), key: '1' },
+    { name: i18n.global.t('result.weekdays.tuesday'), key: '2' },
+    { name: i18n.global.t('result.weekdays.wednesday'), key: '3' },
+    { name: i18n.global.t('result.weekdays.thursday'), key: '4' },
+    { name: i18n.global.t('result.weekdays.friday'), key: '5' },
+    { name: i18n.global.t('result.weekdays.saturday'), key: '6' },
+    { name: i18n.global.t('result.weekdays.sunday'), key: '7' },
   ]
   return templateList.map((tem) => {
     const item = list.find((i) => i.time === tem.key) as TimeCount

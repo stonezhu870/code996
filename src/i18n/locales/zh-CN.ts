@@ -4,6 +4,9 @@ export default {
     viewDemo: '查看示例结果',
     switchMirror: '切换镜像节点',
     madeWithLove: 'Made with ❤️ by',
+    // 新增页脚文案
+    proudlyUsing: '自豪的采用',
+    license: '协议',
   },
   nav: {
     title: '#CODE996 Result',
@@ -81,6 +84,46 @@ export default {
       point1: '分析结果仅供参考，不代表任何建议',
       point2: '原始分析数据通过 URL 传输，请慎重分享 URL 给第三方',
       point3: '请勿用于正式场合',
+    },
+    // 新增表格相关文案
+    table: {
+      timeType: '时间类型',
+      dailyWorkTime: '日均工作时长',
+      weeklyWorkTime: '每周工作时长',
+      weeklyOvertime: '每周加班时长',
+      overtimeRatio: '加班时间占比',
+      index996: '996指数',
+      highlightTip: '* 高亮列为该项目的估算指标',
+    },
+    // 新增工作类型模板
+    workingTypeTemplate: '早 {start} 晚 {end} 一周 {days} 天',
+    // 新增996指数趣味描述
+    index996Descriptions: {
+      excellent: ['令人羡慕的工作', '恭喜，你们没有福报', '你就是搬砖界的欧皇吧'],
+      good: ['你还有剩余价值'],
+      medium: ['加油，老板的法拉利靠你了'],
+      bad: ['你的福报已经修满了'],
+      terrible: ['你们想必就是卷王中的卷王吧'],
+    },
+    // 新增时间标签
+    timeLabels: {
+      workday: '工作日',
+      weekend: '周末',
+    },
+    // 新增图表数据标签
+    chartLabels: {
+      work: '工作',
+      overtime: '加班',
+    },
+    // 新增星期标签
+    weekdays: {
+      monday: '周一',
+      tuesday: '周二',
+      wednesday: '周三',
+      thursday: '周四',
+      friday: '周五',
+      saturday: '周六',
+      sunday: '周日',
     },
   },
 }

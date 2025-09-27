@@ -1,6 +1,7 @@
 import { getRoutesMeta, get996Index } from './index'
 import { getHourResult } from './hour'
 import { getWeekResult } from './week'
+import { i18n } from '../../../i18n'
 
 export function getTableCore() {
   const { hourData, weekData } = getRoutesMeta()
@@ -12,11 +13,11 @@ export function getTableCore() {
   const closingTimeValue = Number(closingTime?.time)
 
   const tableConfig = [
-    { label: '日均工作时长', key: 'codeTime', unit: 'h' },
-    { label: '每周工作时长', key: 'weekTime', unit: 'h' },
-    { label: '每周加班时长', key: 'overtime', unit: 'h' },
-    { label: '加班时间占比', key: 'overTimeRadio', unit: '%' },
-    { label: '996指数', key: 'index996', unit: '' },
+    { label: i18n.global.t('result.table.dailyWorkTime'), key: 'codeTime', unit: 'h' },
+    { label: i18n.global.t('result.table.weeklyWorkTime'), key: 'weekTime', unit: 'h' },
+    { label: i18n.global.t('result.table.weeklyOvertime'), key: 'overtime', unit: 'h' },
+    { label: i18n.global.t('result.table.overtimeRatio'), key: 'overTimeRadio', unit: '%' },
+    { label: i18n.global.t('result.table.index996'), key: 'index996', unit: '' },
   ]
 
   const attendance = closingTimeValue - openingTimeValue

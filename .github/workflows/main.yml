@@ -3,8 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches:
-      - master
-      - pre
+      - main
 
 # 任务
 jobs:
@@ -12,17 +11,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        # 升级到 v4
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        # 推荐：添加 Node.js 设置步骤
+        uses: actions/setup-node@v4
         with:
-          persist-credentials: false
+          node-version: '20' # 或您需要版本
+          cache: 'npm'
 
       - name: Build
         run: npm install && npm run build
 
-      - name: Deploy
+      - name: Deploy to code996 repo
+        # 保持使用 JamesIves action
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          REPOSITORY_NAME: hellodigua/code996
-          BRANCH: gh-pages
-          FOLDER: dist
+          # 1. 修改为使用 SSH 密钥
+          # 这个 Secret 需要在 code996-web 仓库中设置
+          ssh-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+
+          # 2. 目标仓库使用 SSH 地址
+          repository-name: hellodigua/code996
+
+          # 3. 目标分支
+          branch: gh-pages
+
+          # 4. 要部署的文件夹
+          folder: dist
+
+          # 5. 清理目标分支
+          clean: true

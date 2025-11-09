@@ -1,6 +1,8 @@
-# code996
+# code996-web
 
-code996 是一个分析工具，它可以统计 Git 项目的 commit 时间分布，进而推导出项目的编码工作强度。
+code996 网页版，用于查看 code996 脚本的分析结果。
+
+当前项目是 1.0 版本，功能比较简单，新的 2.0 版本请参考 [code996](https://github.com/hellodigua/code996)
 
 Preview：https://hellodigua.github.io/code996/
 
